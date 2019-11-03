@@ -1,0 +1,121 @@
+/*
+@class .btn - обычная кнопка ( по умолчанию inline-block )
+@state :hover - кнопка при наведение
+@state :disabled - неактивная кнопка
+@state -secondary - альтернативный вид кнопки
+@state -fullwidth - кнопка на всю ширину
+@state -center - центрированая кнопка ( например display: block; margin: 0 auto )
+@state -loading - любая кнопка при загрузке ( текст и иконка пропадают, появляется лоадер )
+*/
+
+.btn {
+
+    $btn-height: 40px;
+    $btn-border: 2px;
+
+    $btn-accent-main: $color-primary;
+    $btn-secondary: $color-secondary;
+    
+    $btn-disable: $color-disable;
+    $btn-danger: $color-danger;
+    $btn-warn: $color-warn;
+    $btn-success: $color-success;
+
+    $btn-radius: $border-radius-btn;
+
+    
+
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: $btn-height;
+    max-width: 100%;
+    padding: 0 20px;
+    border: none;
+    border-radius: $btn-radius;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: $btn-height;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: $transition-default; 
+
+    span{
+
+    }
+
+    &:disabled {
+        opacity: 0.6 !important;
+        cursor: auto;
+        &:hover {
+            box-shadow: none;
+        }
+    }
+
+    &--primary,
+    &.-primary {
+        background-color: $btn-accent-main;
+        color:  #fff;
+        &:hover {
+            box-shadow: inset  0 $btn-height*-1 rgba(0,0,0,0.1);
+        }
+    }
+    &--secondary,
+    &.-secondary {
+        background-color: $btn-secondary;
+        color:  #fff;
+        &:hover {
+            box-shadow: inset  0 $btn-height*-1  rgba(0,0,0,0.1);
+        }
+    }
+
+    &--bordered,
+    &.-bordered {
+        background-color: #fff;
+        color: #F54C9B;
+        line-height: $btn-height - $btn-border*2;
+        border: $btn-border solid #F54C9B;
+        &:hover {
+            color:  #fff;
+            box-shadow: inset  0 $btn-height*-1 #F54C9B;
+        }
+    }
+
+    &--secondary-bordered,
+    &.-secondary-bordered {
+        background-color: #fff;
+        color:  #4d648d;
+        line-height: $btn-height - $btn-border*2;
+        border: $btn-border solid #4d648d;
+        &:hover {
+            color:  #fff;
+            box-shadow: inset  0 $btn-height*-1 #4d648d;
+        }
+    }
+
+    &--fullwidth,
+    &.-fullwidth {
+        width: 100%;
+    }
+
+    &--center,
+    &.-center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &--loading,
+    &.-loading {
+        pointer-events: none; // чтобы случайно не кликнули второй раз, пока грузится
+        color: transparent;
+        background-image: url(../images/loader.svg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: 26px 26px;
+    }
+}

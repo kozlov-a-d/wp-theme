@@ -1,0 +1,149 @@
+body {
+    font-family: $font-main;
+    font-size: $font-size-base;
+    font-weight: $font-weight-base;
+    line-height: $line-height-base;
+    color: $color-base;
+}
+
+
+h1,.h1 {
+    font-family: $font-main;
+    font-size: 60px;
+    font-weight: 300;
+    line-height: 80px;
+    text-align: left;
+    color: $color-heading;
+    margin-top: 15px;
+    margin-bottom: $text-margin;
+    @media (max-width: $lg) {
+        font-size: 30px;
+        line-height: 40px;
+        font-weight: 400;
+    }
+}
+
+h2,.h2 {
+    font-family: $font-main;
+    font-size: 35px;
+    font-weight: 400;
+    line-height: 46px;
+    text-align: left;
+    color: $color-heading;
+    margin-bottom: $text-margin;
+    @media (max-width: $lg) {
+        font-size: 25px;
+        line-height: 31px;
+        font-weight: 400;
+    }
+}
+
+h3,.h3 {
+    font-family: $font-main;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 30px;
+    text-align: left;
+    color: $color-heading;
+    margin-bottom: $text-margin;
+    @media (max-width: $lg) {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 30px;
+    }
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    clear: both;
+}
+h1 a,.h1 a,h2 a,.h2 a,h3 a,.h3 a {
+    display: inline;
+    color: $color-heading;
+    text-decoration: none;
+    border-bottom: 1px solid #a5b3b7;
+    &:hover {
+        border-bottom: 1px solid transparent;
+    }
+}
+
+a {
+    color: $color-primary;
+    transition: $transition-time $transition-ease;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+p,
+ul,
+ol,
+table,
+pre{
+    margin: 0 0 $text-margin;
+}
+
+.grid {
+    margin-bottom: $text-margin;
+}
+
+ul,ol {
+    padding-left: 22px;
+    li {
+        margin: 3px 0;
+    }
+}
+
+.with_marker {
+    list-style: none;
+    li {
+        position: relative;
+        &:before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 8px;
+            position: absolute;
+            left: -18px;
+            top: 7px;
+            border-radius: 50%;
+            background: #194769;
+        }
+    }
+}
+
+p+ul,
+p+ol {
+    margin-top: -$text-margin;
+}
+
+.border{
+    border: 2px solid rgba(#3a4750, 0.7);
+    background: rgba(#3a4750, 0.7);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(#3a4750, 0.5);
+}
+
+$tables-color-border: $color-base; // цвет границ в обычной табилчке
+$nice-tables-color-border: #e8eaeb; //  цвет границ в табличке
+$nice-tables-color-striped: #e8eaeb; //  дополнительный цвет для строчек таблицы
+$nice-tables-color-hover: darken(#e8eaeb, 10%); //  подсветка строчек/строк табилцы при наведении
+$nice-tables-padding: 15px 18px; //  отступы в ячейках табилцы
+@include table-default($tables-color-border);
+@include table-nice($nice-tables-color-border, $nice-tables-color-striped, $nice-tables-color-hover, $nice-tables-padding) {
+    table-layout: fixed;
+    background: #edeff3;
+    border-bottom: 2px solid #404040;
+    th {
+        background: #404040;
+        color: #fff;
+        font-weight: 400;
+        text-align: left;
+        border: 1px solid #fff;
+        padding: 12px 15px;
+    }
+    td {
+        border: 1px solid #fff;
+        padding: 12px 15px;
+    }
+}
+@include table-responsive();

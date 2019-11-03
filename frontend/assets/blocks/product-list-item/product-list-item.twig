@@ -1,0 +1,15 @@
+<div class="{% if class %}{{ class }}__item {% endif %}product-item {{ mod }} js-product-list-item">
+    <div class="product-item__img">
+        <!-- Размер превьюшек 384x320 -->
+        <a href="{{ url.productShow }}"><img class="js-img-lazy" src="assets/images/placeholder.svg" data-src="{{ item.img }}" alt="{{ item.title }}" title="{{ item.title }}"></a>
+    </div>
+    <div class="product-item__info">
+        <a class="product-item__title" href="{{ url.productShow }}">{{ item.title }}</a>
+        <div class="product-item__price">
+            <span class="product-item__price-curr">{% if item.price.curr %}{{ item.price.curr }}{% else %}{{ item.price }}{% endif %} ₽</span>
+            {% if item.price.full %} <span class="product-item__price-full">{{ item.price.full }} ₽</span> {% endif %}
+        </div>
+        <!-- onclick="" фейковый для теста -->
+        <button class="product-item__btn-buy" onclick="$(document).trigger('app.cart.add', {});">Купить</button>
+    </div>
+</div>

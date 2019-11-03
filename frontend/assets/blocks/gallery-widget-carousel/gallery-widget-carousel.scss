@@ -1,0 +1,64 @@
+@import "../import.scss";
+
+.gallery-widget-carousel {
+    $img-width: 318px;
+    $img-height: 200px;
+
+    // @extend .l-fullwidth;
+
+    padding: 30px 0;
+    // background: rgb(236, 236, 236);
+
+    &__container {
+        // @extend .l-container;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+
+        h2 {
+            margin: 0;
+        }
+    }
+
+    &__content {
+        @extend .l-fullwidth;
+    }
+
+    &__list {
+    }
+
+    &__item {
+        
+
+        &-img {
+            position: relative;
+            display: block;
+            width: $img-width;
+            height: $img-height;
+            // height: 0;
+            // padding-bottom: $img-height/$img-width * 100%;
+
+            img {
+                @include img-full;
+            }
+        }
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__btn {
+
+        &-more{
+            @extend .btn;
+            @extend .btn--primary; 
+        }
+    }
+}

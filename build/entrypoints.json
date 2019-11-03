@@ -1,0 +1,26 @@
+{
+  "entrypoints": {
+    "index": {
+      "js": [
+        "/runtime.js",
+        "/common.js",
+        "/index.js"
+      ],
+      "css": [
+        "/common.css",
+        "/index.css"
+      ]
+    },
+    "main": {
+      "js": [
+        "/runtime.js",
+        "/common.js",
+        "/main.js"
+      ],
+      "css": [
+        "/common.css",
+        "/main.css"
+      ]
+    }
+  }
+}

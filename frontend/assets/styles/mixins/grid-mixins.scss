@@ -1,0 +1,57 @@
+/*==========================================================================================*/
+/*  Сетка миксинами  */
+/*==========================================================================================*/
+
+/* миксины элементов сетки */
+@mixin grid($grid-gap){
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  margin-left: -$grid-gap/2;
+  margin-right: -$grid-gap/2;
+
+  &>*{
+    margin-left: $grid-gap/2;
+    margin-right: $grid-gap/2;
+  }
+}
+
+/* миксины устанавливающие стандартный размер блоков и отступов*/
+@mixin grid-col($grid-width, $grid-gap){
+  width: #{'calc(' + $grid-width * 100% + ' - ' +  $grid-gap + ')'};
+}
+@mixin grid-col-offset($grid-width, $grid-gap){
+  margin-left: #{'calc(' + $grid-width * 100% + ' + ' +  $grid-gap/2 + ')'};
+}
+
+/* миксины устанавливающие размер блоков и отступов по медиазапросам + можно вставлять дополнительные свойства*/
+@mixin grid-col-media($grid-width, $grid-gap, $grid-screen-prefix){
+  // проверяем задано ли разрешение
+  @if map-has-key($grid-screen, $grid-screen-prefix) {
+
+    @media ( min-width: #{map-get($grid-screen, $grid-screen-prefix)} ) {
+      @include grid-col($grid-width, $grid-gap);
+      @content;
+    }
+
+  } @else {
+    // если не задано, то выводим ошибку
+    @warn "Unknown screen '#{$grid-screen-prefix}' in $grid-screen.";
+  }
+
+}
+@mixin grid-col-offset-media($grid-width, $grid-gap, $grid-screen-prefix){
+  // проверяем задано ли разрешение
+  @if map-has-key($grid-screen, $grid-screen-prefix) {
+
+    @media ( min-width: #{map-get($grid-screen, $grid-screen-prefix)} ) {
+      @include grid-col-offset($grid-width, $grid-gap);
+      @content;
+    }
+
+  } @else {
+    // если не задано, то выводим ошибку
+    @warn "Unknown screen '#{$grid-screen-prefix}' in $grid-screen.";
+  }
+}

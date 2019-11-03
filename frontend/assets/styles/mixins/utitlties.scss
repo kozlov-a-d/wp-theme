@@ -1,0 +1,144 @@
+/**
+ * MIXINS LIST:
+ * @mixin block-full
+ * @mixin block-ratio
+ * @mixin img-full
+ * @mixin fullwidth
+ * @mixin cfix-after
+ * @mixin cfix-before
+ * @mixin cfix
+ * @mixin container( $maxWidth: 1280px)
+ * @mixin media-max($resolution)
+ * @mixin media-min($resolution)
+ * @mixin media-interval($resolution-min, $resolution-max)
+ * @mixin smooth-drop-down-hide
+ * @mixin smooth-drop-down-show
+ */
+
+@mixin block-full($position:absolute){
+    position: $position;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+@mixin block-ratio($width:1px, $height: 1px){
+    width: 100%;
+    height: 0;
+    padding-bottom: $height/$width * 100%;
+}
+
+@mixin img-full($position:absolute, $size:cover) {
+    position: $position;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: $size;
+}
+
+/**
+ * Блок на 100vw
+ */
+@mixin fullwidth() {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translate(-50%); 
+}
+
+// /**
+//  * Блок на 100vw
+//  */
+// @mixin l-container($width: $content-width, $gap: $content-gap) {
+//     width: auto;
+//     max-width: 100%;
+//     margin: 0 $gap;
+        
+//     @media (min-width: ( $width + $gap * 2)) {
+//         width: 100%;
+//         max-width: $width;
+//         margin: 0 auto;
+//     }
+// }
+
+
+/**
+ * Отменяем обтекание ( float )
+ */
+@mixin cfix-after{
+    &:after{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        *zoom: 1;
+    }
+}
+@mixin cfix-before{
+    &:before{
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+        line-height: 0;
+        *zoom: 1;
+    }
+}
+@mixin cfix{
+    @include cfix-before;
+    @include cfix-after;
+}
+
+/**
+ * Центрированый контейнер
+ */
+@mixin container( $maxWidth: 1280px){
+    width: 100%;
+    max-width: $maxWidth;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/**
+ * Миксины для работы с медиазапросами
+ */
+// @mixin media-max($resolution){
+//     @media (max-width: $resolution) {
+//         @content;
+//     }
+// }
+// @mixin media-min($resolution){
+//     @media (min-width: $resolution + 1) {
+//         @content;
+//     }
+// }
+// @mixin media-interval($resolution-min, $resolution-max){
+//     @media (min-width: $resolution-min + 1) and (max-width: $resolution-max){
+//         @content;
+//     }
+// }
+
+/**
+ * Появление выпадашки
+ */
+@mixin smooth-drop-down-hide($is-custom-transition: false){ // скрываем выпадашку
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: 0 0;
+    // если нужен простой вариант простой вариант
+    @if $is-custom-transition {
+        @content;
+    } @else {
+        transition: opacity,transform .2s linear;
+    }
+}
+@mixin smooth-drop-down-show(){ // показываем выпадашку ( по ховеру )
+    opacity: 1;
+    transform: scaleY(1);
+}

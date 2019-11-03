@@ -1,0 +1,95 @@
+/* https://www.flaticon.com/packs/multimedia-collection  */
+
+@import './fonts.scss';
+
+@import '../../../node_modules/normalize.css/normalize.css';
+// @import '../../../node_modules/animate.css/animate.css';
+// @import '../../../node_modules/noty/lib/noty.css';
+// @import '../../../node_modules/noty/lib/themes/sunset.css';
+@import '../../../node_modules/owl.carousel/dist/assets/owl.carousel.css';
+@import '../../../node_modules/owl.carousel/dist/assets/owl.theme.default.css';
+// @import '../../../node_modules/slick-carousel/slick/slick.scss';
+// @import '../../../node_modules/slick-carousel/slick/slick-theme.scss';
+@import '../../../node_modules/photoswipe/dist/photoswipe.css';
+@import '../../../node_modules/photoswipe/dist/default-skin/default-skin.css';
+@import '../../../node_modules/air-datepicker/dist/css/datepicker.css';
+// @import '../../../node_modules/simplebar/dist/simplebar.css';
+
+
+/*====================================================================================================================*/
+/*                                                    VARIABLES                                                       */
+/*====================================================================================================================*/
+
+@import "variables";
+
+/*====================================================================================================================*/
+/*                                                      DS-KIT                                                        */
+/*====================================================================================================================*/
+
+/* MIXINS */  
+@import "mixins/utitlties";
+@import "mixins/geometry";
+@import "mixins/tables";
+
+/* LAYOUT  */  
+@import "mixins/grid-mixins";
+ 
+/* CONTENT */  
+
+
+/* INLINE STYLE */  
+@import "inline-style/grid-inline";  /* .grid  .col-x-y */
+@import "inline-style/order";  /* `.order-{breakpoint}-{value}` */
+@import "inline-style/display";  /* `.display-{breakpoint}-{value}` */
+@import "inline-style/response-img.scss";  /* .response-img (-xs, -sm, -md, -lg, -xl,) */
+
+/*====================================================================================================================*/
+/*                                                      COMMON                                                        */
+/*====================================================================================================================*/
+
+@import "base";
+ 
+body{
+    font-family: $font-main;
+}
+
+@import "common/content";
+@import "common/buttons";
+@import "common/modal";
+@import "common/breadcrumbs";
+@import "common/tabs";
+@import "common/map";
+@import "common/spoiler";
+@import "common/embed-video";
+@import "common/customize--carousel.scss";
+
+/*====================================================================================================================*/
+/*                                                      LAYOUT                                                        */
+/*====================================================================================================================*/
+
+@import "layout/common";
+@import "layout/header.scss";
+@import "layout/footer"; 
+@import "layout/catalog";
+@import "layout/my-profile";
+
+
+/*====================================================================================================================*/
+/*                                                       FORMS                                                        */
+/*====================================================================================================================*/
+
+@import "forms/forms-main";
+ 
+/*====================================================================================================================*/
+/*                                                       PRINT                                                        */
+/*====================================================================================================================*/
+
+@import "print";
+
+/*====================================================================================================================*/
+/*                                                      RTL Fix                                                       */
+/*====================================================================================================================*/
+/*
+ @import "rtl";
+ */
+

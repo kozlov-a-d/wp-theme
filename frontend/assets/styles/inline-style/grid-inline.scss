@@ -1,0 +1,84 @@
+/********************************************************************************************/
+/* Utitilites-Grid--------------------------------------------------------------------------*/
+/* адаптивна сетка                                                                          */
+/* Основная сетка строится на flexbox'ах  + фолбэки на inline-block'ах                      */
+/* Фолбэки цепляются по классу no-flexbox, который добавляет modernizer                     */
+/********************************************************************************************/
+$grid-gap: $grid-margin-horz;
+$grid-gap-bot: $grid-margin-bot;
+$grid-screen: $breakpoints;
+
+
+/*==========================================================================================*/
+/*  Основа  */
+/*==========================================================================================*/
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    margin-left: -$grid-gap/2;
+    margin-right: -$grid-gap/2;
+
+    [class *= "col-"] {
+        margin-left: $grid-gap/2;
+        margin-right: $grid-gap/2;
+        margin-bottom: $grid-gap-bot;
+    }
+
+    .row{
+        display: flex;
+        width: 100%;
+    }
+}
+/*==========================================================================================*/
+/*  Генерируем классы для инлайнового варианта  */
+/*==========================================================================================*/
+@mixin grid-sizer($screen-prefix){
+    $total-columns: 10; // число колонок
+    $col-widths: ();   // вспомогательный массив, в котором будут храниться размеры
+    // генерируем дробные размеры
+    @for $i from 1 through $total-columns {
+        @for $j from 1 through $i {
+            // определяем текущий размеры
+            $width: ($j/$i);
+            // если такого размера ещё не было, то создаём стили
+            @if not index($col-widths, $width) {
+                $width-col: 'calc(' + $width * 100% + ' - ' +  $grid-gap + ')';
+                // разделение на медиа
+                @if($screen-prefix != ''){
+                    .col-#{$screen-prefix}-#{$j}-#{$i} {
+                        width:  unquote($width-col);
+                    }
+                }
+                // и стандартные
+                @else {
+                    .col-#{$j}-#{$i} {
+                        width:  unquote($width-col);
+                    }
+                }
+                // и записываем размер в массив существуюих размеров
+                $col-widths: append($col-widths, $width, comma);
+            }
+        }
+    }
+}
+@mixin grid-sizer-media($grid-screen){
+    // проходим про всем разрешениям и генерируем медиа запросы
+    @each $screen-prefix, $screen-size in $grid-screen {
+        @media (min-width: $screen-size) {
+            @include grid-sizer($screen-prefix);
+        }
+    }
+}
+
+@include grid-sizer('');
+/**
+*  Media query
+*/
+@include grid-sizer-media($grid-screen);
+@media (min-width: 320px) {
+    .grid {
+        overflow: hidden; 
+    }
+}

@@ -5,8 +5,15 @@
  ****************************************************************************************/
 
 function my_theme_assets_function() {
-    wp_enqueue_style( 'app', get_theme_file_uri('/assets/app.css'));
-    wp_enqueue_script( 'app', get_theme_file_uri('/assets/app.js'), array('jquery'), '', true);
+	wp_enqueue_style( 'app', get_theme_file_uri('/build/common.css'));
+	wp_enqueue_script( 'app', get_theme_file_uri('/build/common.js'), '', '', true);
+	if ( is_front_page() ) {
+		wp_enqueue_style( 'app', get_theme_file_uri('/build/index.css'));
+		wp_enqueue_script( 'app', get_theme_file_uri('/build/index.js'), '', '', true);
+	} else {
+		wp_enqueue_style( 'app', get_theme_file_uri('/build/main.css'));
+		wp_enqueue_script( 'app', get_theme_file_uri('/build/main.js'), '', '', true);
+	}
 }
 
 add_action('wp_enqueue_scripts','my_theme_assets_function');

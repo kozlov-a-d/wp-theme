@@ -1,0 +1,356 @@
+@import "./elements";
+@import "./custom-number";
+@import "./custom-file";
+
+/**
+ * Contains:
+ * .form-item
+ * .form-btns-container
+ * .form-privacy-police
+ * .form-success
+ * .form-heading
+ * .form-fragment
+ */
+@import "./layout";
+
+/* Файл со стилями конкретных форм */
+
+.form-any{
+    $col-width: 40px;
+
+    /* Create grid (optional) */
+    &__container{
+        @include grid($col-width);
+    }
+
+    &__col{
+        @include grid-col(1/2, $col-width);
+
+        @media (max-width: $md) {
+            @include grid-col(1, $col-width);
+        }
+
+        &-fullwidth{
+            @include grid-col(1, $col-width);
+        }
+    }
+ 
+    .form-item{
+        /* Options for .form-item */
+        @extend .form-item--row; 
+        /* @extend .form-item--column; */
+
+        /* если надо костыльнуть что-то из частей итема */
+        .form-item{
+
+            &__label{
+                
+            }
+
+            &__field{
+                
+            }
+
+            &__input{
+                
+            }
+
+            &__error{
+                
+            }
+
+            &__description{
+                
+            }
+        }
+    }
+
+    .form-btns-container{
+        /* Options for .form-btns-container */
+        /* @extend .form-btns-container--align-left; */
+        /* @extend .form-btns-container--align-right; */
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+
+.form-callback{
+    margin: 0;
+
+    .form-item{
+        @extend .form-item--row; 
+    }
+
+    .form-btns-container{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-privacy-police{
+        margin-bottom: 8px;
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    // какие то костыли, если надо
+}
+
+.form-example{
+    $col-width: 40px;
+    margin: 50px auto 50px;
+
+    &__container{
+        @include grid($col-width);
+    }
+
+    &__col{
+        @include grid-col(1/2, $col-width);
+
+        @media (max-width: $md) {
+            @include grid-col(1, $col-width);
+        }
+
+        &-fullwidth{
+            @include grid-col(1, $col-width);
+        }
+    }
+ 
+    .form-item{
+        @extend .form-item--row; 
+    }
+
+    .form-btns-container{
+        
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+.form-feedback{
+    $col-width: 40px;
+    max-width: 800px; 
+    margin: 50px auto 50px;
+
+    &__container{
+        @include grid($col-width);
+    }
+
+    &__col{
+        @include grid-col(1/2, $col-width);
+
+        @media (max-width: $md) {
+            @include grid-col(1, $col-width);
+        }
+
+        &-fullwidth{
+            @include grid-col(1, $col-width);
+        }
+    }
+ 
+    .form-item{
+        @extend .form-item--row; 
+    }
+
+    .form-btns-container{
+        
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+.form-feedback-alternative{
+    $col-width: 40px;
+    max-width: 800px; 
+    margin: 50px auto 50px;
+
+    .form-item{
+        @extend .form-item--column; 
+    }
+
+    .form-btns-container{
+        
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+.form-send-enquiry{
+    $col-width: 40px;
+
+    &__container{
+        @include grid($col-width);
+    }
+
+    &__col{
+        @include grid-col(1/2, $col-width);
+
+        @media (max-width: $md) {
+            @include grid-col(1, $col-width);
+        }
+
+        &-fullwidth{
+            @include grid-col(1, $col-width);
+        }
+    }
+ 
+    .form-item{
+        @extend .form-item--row; 
+    }
+
+    .form-btns-container{
+        
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+.form-sign-up{
+    $col-width: 40px;
+    max-width: 800px; 
+    margin: 50px auto 50px;
+ 
+    .form-item{
+        @extend .form-item--column; 
+    }
+
+    .form-btns-container{
+        @extend .form-btns-container--align-right;
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    /* какие то костыли, если надо */
+}
+
+.form-add-review{
+    $col-width: 40px;
+    margin: 50px 40px 50px;
+
+    @media (max-width: $md) {
+        margin: 30px 0 30px;
+    }
+
+    &__container{
+        @include grid($col-width);
+    }
+
+    &__col{
+        @include grid-col(1/2, $col-width);
+
+        @media (max-width: $md) {
+            @include grid-col(1, $col-width);
+        }
+
+        &-fullwidth{
+            @include grid-col(1, $col-width);
+        }
+    }
+ 
+    .form-item{
+        @extend .form-item--row; 
+    }
+
+    .form-btns-container{
+        
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    // какие то костыли, если надо
+}
+
+.form-order-checkout{
+    $col-width: 40px;
+    max-width: 800px; 
+    margin: 0 0 50px;
+ 
+    .form-item{
+        @extend .form-item--column; 
+        margin-bottom: 15px;
+
+        .form-item{
+            &__label{
+                width: 160px;
+                min-width: 160px;
+            }
+        }
+    }
+
+    .form-btns-container{
+        // @extend .form-btns-container;
+    }
+
+    &__btn{
+
+        &-submit{
+            @extend .btn;
+            @extend .btn--primary;
+        }
+    }
+
+    // какие то костыли, если надо
+
+    textarea{
+        height: 130px;
+    }
+}
+
